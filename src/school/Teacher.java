@@ -3,7 +3,7 @@ package school;
 public class Teacher extends Person {
     public static void main(String[] args) {
 
-        Teacher teacher1 = new Teacher() ;
+//        Teacher teacher1 = new Teacher() ;
 
         System.out.println();
         int ageOfMath = 55;

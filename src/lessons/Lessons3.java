@@ -3,7 +3,7 @@ package lessons;
 public class Lessons3 {
     public static void main(String[] args) {
 
-        Object obj = new Object();
+//        Object obj = new Object();
 
         Integer i = new Integer(8);
         Integer i1 = 8;
