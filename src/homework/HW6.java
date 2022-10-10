@@ -290,7 +290,118 @@ public class HW6 {
         }
         System.out.println();
     }
+    /*
+    Task 22.2
 
+     */
+    public static String returnMonth(int number) {
+        if (number > 0 && number < 13) {
+            if (number == 1) {
+                return "Jan";
+            } else if (number == 2) {
+                return "Feb";
+            } else if (number == 3) {
+                return "Mar";
+            } else if (number == 4) {
+                return "Apr";
+            } else if (number == 5) {
+                return "May";
+            } else if (number == 6) {
+                return "Jun";
+            } else if (number == 7) {
+                return "Jul";
+            } else if (number == 8) {
+                return "Aug";
+            } else if (number == 9) {
+                return "Sep";
+            } else if (number == 10) {
+                return "Oct";
+            } else if (number == 11) {
+                return "Nov";
+            } else if (number == 12) {
+                return "Dec";
+            }
+        }
+        return "Error";
+    }
+    public static String returnDayOfTheWeek(int number) {
+        if (number > 0 && number < 8) {
+            if (number == 1) {
+                return "Mon";
+            } else if (number == 2) {
+                return "Tue";
+            } else if (number == 3) {
+                return "Wed";
+            } else if (number == 4) {
+                return "Thu";
+            } else if (number == 5) {
+                return "Fri";
+            } else if (number == 6) {
+                return "Sat";
+            } else {
+                return "Sun";
+            }
+        }
+        return "Error";
+    }
+    public static int returnDayOfTheWeek(String day) {
+        if (day.equals("Mon")) {
+            return 1;
+        } else if (day.equals("Tue")) {
+            return 2;
+        } else if (day.equals("Wed")) {
+            return 3;
+        } else if (day.equals("Thu")) {
+            return 4;
+        } else if (day.equals("Fri")) {
+            return 5;
+        } else if (day.equals("Sat")) {
+            return 6;
+        } else if (day.equals("Sun")) {
+            return 7;
+        }
+        return 0;
+    }
+    public static int returnDate(int date) {
+        if (date < 10) {
+            String number = String.format("%03d", date);;
+            return Integer.valueOf(number);
+        } else {
+            return date;
+        }
+    }
+    public static void printEightDaysFromDate(String day, int month, int date) {
+        int l = 8;
+        if (returnDayOfTheWeek(day) == 0 || returnMonth(month).equals("Error") || month <= 0 || date <= 0) {
+            System.out.println("Please enter correct data.");
+        } else if (month <= 7 && month % 2 == 1 && date > 31) {
+            System.out.println("Please enter correct date.");
+        } else if (month >= 8 && month <= 12 && month % 2 == 0 && date > 31) {
+            System.out.println("Please enter correct date.");
+        } else if ((month == 4 || month == 6 ||  month == 9 || month == 11) && date > 30) {
+            System.out.println("Please enter correct date.");
+        }
+        else if (month == 2 && date > 28) {
+            System.out.println("Please enter correct date.");
+        } else {
+            for (int i = returnDayOfTheWeek(day); i <= 7 && l > 0; i++, date++, l--) {
+                if (i != 7) {
+                    if ((month <= 7 && month % 2 != 0 && returnDate(date) >= 32)
+                            || ((month == 9 || month == 11) && returnDate(date) >= 31)
+                            || ((month == 4 || month == 6) && returnDate(date) >= 31)
+                            || (month >= 8 && month <= 12 && month % 2 == 0 && returnDate(date) >= 32)
+                            || (month == 2 && returnDate(date) >= 29)) {
+                        date = 1;
+                        month +=1;
+                    }
+                    System.out.println(returnDayOfTheWeek(i) + ", " + returnMonth(month) + " " + returnDate(date));
+                } else {
+                    System.out.println(returnDayOfTheWeek(i) + ", " + returnMonth(month) + " " + returnDate(date));
+                    i = 0;
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) {
         printTaskNumber(1);
