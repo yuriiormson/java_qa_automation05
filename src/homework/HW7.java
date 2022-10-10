@@ -109,6 +109,7 @@ public class HW7 {
         }
         return monthString;
     }
+
     public static String returnDayOfWeek(int number) {
         int minNumber = 0;
         int maxNumber = 8;
@@ -143,6 +144,32 @@ public class HW7 {
         return weekString;
     }
 
+    /*
+    Task 2
+    Написать универсальный метод для построения последовательности, которая начинается с числа start,
+    заканчивается числом end (оба включительно). Все числа в этой последовательности должны быть кратны числу step.
+    Этот метод должен высчитывать первое кратное число в диапазоне [start, end]
+    и строить последовательность (возрастающую или убывающую) от вычисленного первого кратного числа с шагом step.
+    (Эта задача по мотивам разбора HW6,  Part 1  в воскресенье 9 октября)
+     */
+    public static void returnUniversalSubquences(int start, int step, int end) {
+        if (step > 0 && end > 0) {
+            for (int i = start; i <= end; i++) {
+                if (i % step == 0) {
+                    System.out.print(i + " ");
+                }
+            }
+        } else if (step < 0 && end < 0){
+            for (int i = start; i >= end; i--) {
+                if (i % step == 0) {
+                    System.out.println(i + " ");
+                }
+            }
+        } else
+            System.out.println("Error");
+        System.out.println();
+    }
+
     public static void main(String[] args) {
 
         printTaskNumber(1);
@@ -153,16 +180,16 @@ public class HW7 {
         int monthTC = 7;
         String expectedResultString = "July";
         String actualResultString = returnMonth(monthTC);
-        verifyEquals(expectedResultString,actualResultString);
+        verifyEquals(expectedResultString, actualResultString);
         printTCNumber(1);
-        printTestResult(verifyEquals(expectedResultString,actualResultString));
+        printTestResult(verifyEquals(expectedResultString, actualResultString));
 
         monthTC = 13;
         expectedResultString = "Error";
         actualResultString = returnMonth(monthTC);
-        verifyEquals(expectedResultString,actualResultString);
+        verifyEquals(expectedResultString, actualResultString);
         printTCNumber(2);
-        printTestResult(verifyEquals(expectedResultString,actualResultString));
+        printTestResult(verifyEquals(expectedResultString, actualResultString));
 
         printTaskNumber(1.1);
 
@@ -172,17 +199,20 @@ public class HW7 {
         int weekTC = 3;
         expectedResultString = "Wednesday";
         actualResultString = returnDayOfWeek(weekTC);
-        verifyEquals(expectedResultString,actualResultString);
+        verifyEquals(expectedResultString, actualResultString);
         printTCNumber(3);
-        printTestResult(verifyEquals(expectedResultString,actualResultString));
+        printTestResult(verifyEquals(expectedResultString, actualResultString));
 
         weekTC = 8;
         expectedResultString = "Error";
         actualResultString = returnDayOfWeek(weekTC);
-        verifyEquals(expectedResultString,actualResultString);
+        verifyEquals(expectedResultString, actualResultString);
         printTCNumber(4);
-        printTestResult(verifyEquals(expectedResultString,actualResultString));
+        printTestResult(verifyEquals(expectedResultString, actualResultString));
 
+        printTaskNumber(2);
+
+        returnUniversalSubquences(8, -3, -30);
 
     }
 }
